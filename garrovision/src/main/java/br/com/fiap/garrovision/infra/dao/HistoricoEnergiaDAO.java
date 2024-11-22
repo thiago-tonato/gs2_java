@@ -64,6 +64,31 @@ public class HistoricoEnergiaDAO {
         return null;
     }
 
+    public List<HistoricoEnergia> findByResidenciaId(int idResidencia) {
+        String sql = "SELECT * FROM historico_energia WHERE id_residencia = ?";
+        List<HistoricoEnergia> historicos = new ArrayList<>();
+
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, idResidencia); // Definindo o id da residência como parâmetro
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    historicos.add(new HistoricoEnergia(
+                            rs.getInt("id_historico"),
+                            rs.getInt("id_residencia"),
+                            rs.getDate("data_registro"),
+                            rs.getDouble("producao"),
+                            rs.getDouble("consumo"),
+                            rs.getDouble("saldo_energetico")
+                    ));
+                }
+            }
+        } catch (SQLException e) {
+            throw new APIException("Erro ao buscar histórico de energia por ID da residência.", e);
+        }
+        return historicos;
+    }
+
+
     public void save(HistoricoEnergia historico) {
         String sql = "INSERT INTO historico_energia (id_historico, id_residencia, data_registro, producao, consumo, saldo_energetico) VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {

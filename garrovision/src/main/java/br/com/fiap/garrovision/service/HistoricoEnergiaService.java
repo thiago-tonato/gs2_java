@@ -29,6 +29,14 @@ public class HistoricoEnergiaService {
         return historico;
     }
 
+    public List<HistoricoEnergia> buscarPorIdResidencia(int idResidencia) {
+        List<HistoricoEnergia> historicos = historicoEnergiaDAO.findByResidenciaId(idResidencia);
+        if (historicos.isEmpty()) {
+            throw new APIException("Nenhum histórico encontrado para a residência com ID " + idResidencia);
+        }
+        return historicos;
+    }
+
     public void salvar(HistoricoEnergia historico) {
         historicoEnergiaBO.validarHistorico(historico);
         historicoEnergiaDAO.save(historico);

@@ -33,6 +33,14 @@ public class HistoricoEnergiaController {
         return Response.ok(historico).build();
     }
 
+    @GET
+    @Path("/residencia/{idResidencia}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getHistoricosByResidencia(@PathParam("idResidencia") int idResidencia) {
+        List<HistoricoEnergia> historicos = historicoEnergiaService.buscarPorIdResidencia(idResidencia);
+        return Response.ok(historicos).build();
+    }
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
