@@ -4,6 +4,7 @@ import br.com.fiap.garrovision.BO.HistoricoEnergiaBO;
 import br.com.fiap.garrovision.dominio.HistoricoEnergia;
 import br.com.fiap.garrovision.exceptions.APIException;
 import br.com.fiap.garrovision.infra.dao.HistoricoEnergiaDAO;
+
 import java.util.List;
 
 public class HistoricoEnergiaService {

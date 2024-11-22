@@ -76,21 +76,10 @@ public class Residencia {
         this.limiteConsumo = limiteConsumo;
     }
 
-    public Date getDataCadastro() {
-        return dataCadastro;
-    }
-
     public void setDataCadastro(Date dataCadastro) {
         this.dataCadastro = dataCadastro;
     }
 
-    public boolean isDentroDoLimiteConsumo(double consumoAtual) {
-        return consumoAtual <= limiteConsumo;
-    }
-
-    public double calcularPotencialEnergetico() {
-        return capacidadeGeracao - limiteConsumo;
-    }
 }
 
 

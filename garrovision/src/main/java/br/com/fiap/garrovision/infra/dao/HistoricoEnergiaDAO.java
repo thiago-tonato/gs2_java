@@ -19,7 +19,6 @@ public class HistoricoEnergiaDAO {
         this.connection = connectionfactory.getConnection();
     }
 
-    // Buscar todos os registros
     public List<HistoricoEnergia> findAll() {
         List<HistoricoEnergia> historicos = new ArrayList<>();
         String sql = "SELECT * FROM historico_energia";
@@ -43,7 +42,6 @@ public class HistoricoEnergiaDAO {
         return historicos;
     }
 
-    // Buscar um registro por ID
     public HistoricoEnergia findById(int id) {
         String sql = "SELECT * FROM historico_energia WHERE id_historico = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -66,7 +64,6 @@ public class HistoricoEnergiaDAO {
         return null;
     }
 
-    // Salvar um novo registro
     public void save(HistoricoEnergia historico) {
         String sql = "INSERT INTO historico_energia (id_historico, id_residencia, data_registro, producao, consumo, saldo_energetico) VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -90,8 +87,6 @@ public class HistoricoEnergiaDAO {
         }
     }
 
-
-    // Atualizar um registro existente
     public void update(HistoricoEnergia historico) {
         String sql = "UPDATE historico_energia SET id_residencia = ?, data_registro = ?, producao = ?, consumo = ?, saldo_energetico = ? WHERE id_historico = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -107,7 +102,6 @@ public class HistoricoEnergiaDAO {
         }
     }
 
-    // Remover um registro por ID
     public void delete(int id) {
         String sql = "DELETE FROM historico_energia WHERE id_historico = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {

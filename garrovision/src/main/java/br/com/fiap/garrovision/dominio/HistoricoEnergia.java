@@ -13,7 +13,6 @@ public class HistoricoEnergia {
     private double consumo;
     private double saldoEnergetico;
 
-
     @JsonCreator
     public HistoricoEnergia(@JsonProperty("idHistorico") int idHistorico, @JsonProperty("idResidencia") int idResidencia, @JsonProperty("dataRegistro") Date dataRegistro, @JsonProperty("producao") double producao, @JsonProperty("consumo") double consumo, @JsonProperty("saldoEnergetico") double saldoEnergetico) {
         this.idHistorico = idHistorico;
@@ -39,35 +38,21 @@ public class HistoricoEnergia {
         return idResidencia;
     }
 
-    public void setIdResidencia(int idResidencia) {
-        this.idResidencia = idResidencia;
-    }
-
     public Date getDataRegistro() {
         return dataRegistro;
-    }
-
-    public void setDataRegistro(Date dataRegistro) {
-        this.dataRegistro = dataRegistro;
     }
 
     public double getProducao() {
         return producao;
     }
 
-    public void setProducao(double producao) {
-        this.producao = producao;
-    }
-
     public double getConsumo() {
         return consumo;
     }
 
-
     public double getSaldoEnergetico() {
         return saldoEnergetico;
     }
-
 
 }
 

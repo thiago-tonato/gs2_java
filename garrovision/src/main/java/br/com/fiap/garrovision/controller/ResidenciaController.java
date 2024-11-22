@@ -57,7 +57,6 @@ public class ResidenciaController {
     }
 
 
-
     @PUT
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)

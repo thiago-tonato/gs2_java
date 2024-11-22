@@ -2,6 +2,7 @@ package br.com.fiap.garrovision.infra.dao;
 
 import br.com.fiap.garrovision.dominio.Residencia;
 import br.com.fiap.garrovision.exceptions.APIException;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,6 @@ public class ResidenciaDAO {
         this.connection = connectionfactory.getConnection();
     }
 
-    // Metodo para buscar uma residência por ID
     public Residencia findById(int id) {
         String sql = "SELECT * FROM residencias WHERE id_residencia = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -39,7 +39,6 @@ public class ResidenciaDAO {
         return null;
     }
 
-    // CREATE
     public void save(Residencia residencia) throws SQLException {
         String sql = "INSERT INTO residencias (id_residencia, nome_responsavel, endereco, capacidade_geracao, tipo_fonte, limite_consumo) VALUES (?, ?, ?, ?, ?, ?)";
 
@@ -66,9 +65,6 @@ public class ResidenciaDAO {
         }
     }
 
-
-
-    // READ (já existente)
     public List<Residencia> findAll() throws SQLException {
         List<Residencia> residencias = new ArrayList<>();
         String sql = "SELECT * FROM residencias";
@@ -92,7 +88,6 @@ public class ResidenciaDAO {
         return residencias;
     }
 
-    // UPDATE
     public void update(Residencia residencia) throws SQLException {
         String sql = "UPDATE residencias SET nome_responsavel = ?, endereco = ?, capacidade_geracao = ?, tipo_fonte = ?, limite_consumo = ? WHERE id_residencia = ?";
 
@@ -110,7 +105,6 @@ public class ResidenciaDAO {
         }
     }
 
-    // DELETE
     public void delete(int idResidencia) throws SQLException {
         String sql = "DELETE FROM residencias WHERE id_residencia = ?";
 
